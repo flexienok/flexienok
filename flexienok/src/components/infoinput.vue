@@ -1,4 +1,8 @@
 <template>
+        <v-row
+          align="center"
+          justify="center"
+        >
   <v-col cols="3" >
     <v-card dark justify-center>
       <v-content>
@@ -32,14 +36,30 @@
               color="success"
               class="mr-4"
               @click="validate"
+              :loading="loading"
+              :disabled="loading"
             >
               Get answer
             </v-btn>
+            <v-btn
+              color="error"
+              class="mr-4"
+              @click="loading = false"
+            >
+              reset
+            </v-btn>
           </v-form>
+          
         </v-container>
       </v-content>
     </v-card>
+    <v-flex xs12>
+    <v-card dark>
+      <span id="a"></span>
+    </v-card>
+    </v-flex>
   </v-col>
+</v-row>
 </template>
 
 <script>
@@ -52,27 +72,47 @@ var baseurl =  "https://nokflex-api.nok.se/api/v2/assignment/solution/"
       CourseID: '',
       AssignmentID: '',
       AutherizationID: '',
+      loading: false,
     }),
 
     methods: {
       validate () {
+        this.loading = true
         
         var url = baseurl + this.AssignmentID + "?courseId=" + this.CourseID;
         var headers = {
           "authorization" : "Bearer " + this.AutherizationID
         };
         var i = 0;
+        var answers = [];
+
 
         axios.get(url, {headers : headers}, ).then(function (response) {
-          console.log(response.data.solution)
-          console.log(response.data.solution.length) 
+          // console.log(response.data.solution)
+          // console.log(response.data.solution.length) 
           for (i = 0; i < response.data.solution.length; i++){
             console.log(response.data.solution[i])
-            console.log(i)
+            // console.log(i)
+            answers.push(response.data.solution[i].answers + "\n")
           }
+
+           document.getElementById("a").innerHTML = answers;
+           this.loading = false
+
         }).catch(error => {
-          console.log(error.response)
-          // console.log(headers)
+
+          if (error.response.data.hasOwnProperty("message")){
+            answers = "Err: " + error.response.status + "\n" + error.response.data.message
+
+          } else if (error.response.data.hasOwnProperty("error")){
+
+            answers = "Err: " + error.response.status + "\n" + error.response.data.error
+          }
+          
+            console.log(error.response)
+
+          document.getElementById("a").innerHTML = answers;
+          this.loading = false
         });
         
       },
