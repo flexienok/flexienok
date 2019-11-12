@@ -1,16 +1,26 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/GetAnswer">GetAnswer</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app >
+    <toolbar />
+
+    <v-content class="grey darken-4">
+      <v-fade-transition mode="out-in">
+        <router-view/> 
+      </v-fade-transition>
+    </v-content>
+  </v-app>
 </template>
 
+<script>
+  export default {
+    components: {
+      toolbar: () => import("./components/toolbar.vue")
+    }
+  }
+</script>
+
+
 <style>
-#app {
+/* #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -26,5 +36,5 @@
 }
 #nav a.router-link-exact-active {
   color: #42b983;
-}
+} */
 </style>
