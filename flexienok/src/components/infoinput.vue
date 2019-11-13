@@ -9,7 +9,7 @@
               <v-text-field v-model="AssignmentID" label="AssignmentID" required></v-text-field>
               <v-text-field v-model="AutherizationID" label="AutherizationID" required></v-text-field>
             </v-form>
-            <v-btn color="info" class="mr-4" @click="get">getToken()</v-btn>
+            <v-btn color="info" class="mr-4" @click="getToken">getToken()</v-btn>
             <v-col>
               <v-btn
                 color="success"
