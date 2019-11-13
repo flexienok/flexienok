@@ -3,9 +3,9 @@
 </template>
 
 <script>
-  export default {
-    components: {
-      infoinput: () => import("../components/infoinput.vue")
-    }
+export default {
+  components: {
+    infoinput: () => import("../components/infoinput.vue")
   }
+};
 </script>

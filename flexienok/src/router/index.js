@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '../views/Home.vue'
 import paths from "./paths";
 
-function route(path, view, name,) {
+function route(path, view, name, ) {
   return {
     name,
     view,
@@ -18,15 +18,23 @@ let router = new Router({
   mode: "history",
   routes: paths
     .map(path => route(path.path, path.view, path.name, path.props))
-    .concat([{ path: "*", redirect: "/" }]),
+    .concat([{
+      path: "*",
+      redirect: "/"
+    }]),
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition;
     }
     if (to.hash) {
-      return { selector: to.hash };
+      return {
+        selector: to.hash
+      };
     }
-    return { x: 0, y: 0 };
+    return {
+      x: 0,
+      y: 0
+    };
   }
 });
 
