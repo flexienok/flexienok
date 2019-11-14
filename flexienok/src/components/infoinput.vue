@@ -1,5 +1,5 @@
 <template>
-  <v-col>
+  <v-col cols="4">
     <v-card dark justify-center class="width">
       <v-content>
         <v-container fluid fill-height>
@@ -35,7 +35,7 @@
             <v-btn
               color="success"
               class="mr-4"
-              @click="validate"
+              @click="validate(), makeURL()"
               :loading="loading"
               :disabled="loading"
             >Get answer</v-btn>
@@ -46,6 +46,13 @@
           </v-col>
         </v-container>
       </v-content>
+    </v-card>
+    <v-card dark>
+      <v-col>
+        <v-text-field v-model="inputURL" label="paste url" required></v-text-field>
+
+        <v-btn @click="urlll">test</v-btn>
+      </v-col>
     </v-card>
     <v-flex xs12>
       <v-card dark>
@@ -66,6 +73,7 @@ export default {
     CourseID: "",
     AssignmentID: "",
     AutherizationID: "",
+    inputURL: "",
     loading: false,
     courses: [
       { bok: "matte 1a", id: "940" },
@@ -76,6 +84,13 @@ export default {
 
   methods: {
     ...mapMutations(["getToken"]),
+    makeURL() {
+      this.inputURL =
+        "https://nokflex.nok.se/" +
+        this.CourseID +
+        "/uppgift/" +
+        this.AssignmentID;
+    },
     validate() {
       this.loading = true;
 
