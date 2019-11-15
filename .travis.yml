@@ -1,17 +1,15 @@
 language: node_js
 node_js:
-- stable
-install:
-- cd flexienok
-- npm install
-- npm run build
+ - "node"
+
+cache: npm
+
+script: cd flexienok; npm install; npm run build
+
 deploy:
-  local_dir: "./dist"
-  provider: pages
-  skip_cleanup: true
-  github_token: "$GITHUB_TOKEN"
-  on:
-    branch: master
-env:
-  global:
-    secure: 1ovHvhdddONEWq1rAM0zDNIIiUsBxGGb7FiXC6rCRzx9/WkphKpglNpVkwi/G131IBm0iUucpnURQJRvVj0AUXZ4K5QN6rCZVUZKmEJIaWTZVtSYqnEGT4WoQOy2gUDw7xf4oAAlVdA7nxPkJTGZ33AzvBdKdT3PfrTSnP8S3g86S/6mNkOtjVkUwQPSFmlFAqQq3UuKT6peMzB+swGL3v1I9nBdfpTaSTJqm35GshgPJTP+AVaObTcp9webc9ReRZyrzu/pJCX7uQMYC2rB92Pjf04IaJpytCnL1LoID77od87ovxtxS7u1H6Qnha/vxpjgEHmW911DnM0d3KJutt1RLaBYWchnmpJJ/iJ4+wLZSo6d/cITV3TKK3IdUKQyGpT3F2uOVnuT/OsvMpjwYnn/wn8UBzonxIKCsnJAkh3DKXx128uF/na2oDv7OpAEj7MReassK9Y50lllvCsO1kFxZHfst+rLxKEJ8LCnHu0LF9/dIb08CiyNLzsJgCfmxQHsd3XANBJkchyZZHw5tRgsh1LgRWOl3IJ+nambAWCADJb0O5smVAiU1PS+qAGDhC515bK1H7x6xU8660t9AQXPwG8HCmBoJyLePclhNHpNcIda9YIEDI5118KuFBiM2dXjiBfgTEm6Ppdi7zLtGUg6UX961EliwMuKqPSBa5Y=
+ provider: pages
+ skip_cleanup: true
+ github_token: $GITHUB_TOKEN
+ local_dir: dist
+ on:
+   branch: master
