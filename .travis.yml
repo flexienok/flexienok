@@ -9,6 +9,6 @@ deploy:
   local_dir: "./dist"
   provider: pages
   skip_cleanup: true
-  github_token: "d8f84335887fa07097c66c0679ab51ec1a5b0359"
+  github_token: "$GITHUB_TOKEN"
   on:
     branch: master
