@@ -4,6 +4,7 @@ node_js:
   - "stable"
 
 install:
+  - cd flexienok
   - npm install
   - npm run build
 
@@ -14,3 +15,4 @@ deploy:
   github_token: $GITHUB_TOKEN
   on:
     branch: master
+ 
