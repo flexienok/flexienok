@@ -68,9 +68,9 @@ export default {
     AutherizationID: "",
     loading: false,
     courses: [
-      { bok: "matte 1a", id: "940" },
-      { bok: "matte 1b", id: "950" },
-      { bok: "matte 1c", id: "960" }
+      { bok: "Matte 1a", id: "940" },
+      { bok: "Matte 1b", id: "950" },
+      { bok: "Matte 1c", id: "960" }
     ]
   }),
 
