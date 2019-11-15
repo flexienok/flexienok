@@ -4,7 +4,7 @@ node_js:
 
 cache: npm
 
-script: cd flexienok; npm run build
+script: cd flexienok; npm i; npm run build
 
 deploy:
  provider: pages
