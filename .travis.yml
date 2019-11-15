@@ -9,7 +9,7 @@ install:
   - npm run build
 
 deploy:
-  local_dir: ./flexienok/dist
+  local_dir: ./dist
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
