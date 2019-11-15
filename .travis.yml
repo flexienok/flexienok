@@ -6,7 +6,7 @@ node_js:
 install:
   - cd flexienok
   - npm install
-  - npm run serve
+  - npm run build
 
 deploy:
   local_dir: ./flexienok/dist
