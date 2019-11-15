@@ -9,10 +9,10 @@ deploy:
   local_dir: "./dist"
   provider: pages
   skip_cleanup: true
-  github_token: "d8f84335887fa07097c66c0679ab51ec1a5b0359 "
+  github_token: "d8f84335887fa07097c66c0679ab51ec1a5b0359"
   on:
     branch: master
 env:
   global:
-    github_token: "$GITHUB_TOKEN"
+    github_token: "d8f84335887fa07097c66c0679ab51ec1a5b0359"
     secure: TRAtOD3zatsPYaRfEo5ztprGJTiO/D7b+eYIMHplLrnaw61o5QfRl8L7mIFblykvMNJENZqJ/HrUtQ3kCi6znG6tUrdtZgOfhzJnFPR2ODgSzYjQFQLz8bmQcctyN/NDidMkBuuKadBNi3uqX8J3Ho2CSxUzXYC95dlzNrOnLm2ZagWeVlzlkhyZ+cniyh1vJJHtc6e6P75yzkpvAX6/UtuplLDaDOBMCdhVDZFt8I1n+gcb3v0vc0R+GrLj9Tp52CL6qZOPhiijLHtzyQWXkLD8ILV10/BUpvsarIZc+z4uZPeA6e0SlF8aquMELg44Jgo74LBbqtb5SIlyZFfrzvLCyiiSINFSYBmmLmJJOYvFe66atiMWfp1/huYSE+uyHCmAgq4FLTP10WUEN8uKNLNh3dN0oE3WVGFBEBAzUn0sptB/SkjDvWMl0ycn4ihHENep3sJYJAgIljLkj/fud21cRZlogJTosBqclwb/DZ4crPN9+kVxCNfDs6sakZsexEHojhCzCSINX6KM10am8CPlVLdcKOOE8/fyLXfbRi1+m3NgrC5eTUmoOyFNlhBJN3jjomM4I1RGuZg4mGkWkoGaxfJqjv0H2pkL7YoOtlg06xB7vBOvxcIHyjZtptxnXfpWRGdukKwt1gkt4sUqhiwKxwPTe1T3DbZX8wlAfgQ=
