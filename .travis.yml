@@ -2,7 +2,10 @@ language: node_js
 node_js:
 - node
 cache: npm
-script: cd flexienok; npm i; npm run build
+before-script:
+-  cd flexienok
+-  npm i
+script: npm run build
 deploy:
   provider: pages
   skip_cleanup: true
