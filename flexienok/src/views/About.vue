@@ -14,7 +14,17 @@
           justify="center"
           >
 
+            <span id="Headfoot">
+      By Tokfrans03 and zaamme
+    </span>
+    </v-row>
+    
+      <v-row
+            align="center"
+          justify="center"
+          >
         <span id="Body">
+      
       For all of your Noking needs!
     </span>
   </v-row>
@@ -32,5 +42,9 @@
 #Head {
   color: rgb(255, 255, 255);
   font-size:100px;
+}
+
+#Headfoot {
+  color: rgb(255, 255, 255);
 }
 </style>
