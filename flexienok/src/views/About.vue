@@ -29,6 +29,17 @@
     </span>
   </v-row>
 
+  <v-row
+  allgn="center"
+  justify="center">
+
+    <span id="body">
+      Instructions: input your AssingmentID, eg: 9065 <br> input your AutherizationID, found in networklogs of your question <br> string of number and letters, usually starts with "ey"
+    </span>
+    
+
+  </v-row>
+
 </v-flex>
 </template>
 

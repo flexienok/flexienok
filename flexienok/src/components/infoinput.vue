@@ -51,11 +51,11 @@
       <v-col>
         <v-text-field v-model="inputURL" label="paste url" required></v-text-field>
 
-        <v-btn @click="urlll">test</v-btn>
+        <v-btn @click="parseUrl">test</v-btn>
       </v-col>
     </v-card>
     <v-flex xs12>
-      <v-card dark>
+      <v-card >
         <span id="a"></span>
       </v-card>
     </v-flex>
@@ -90,6 +90,9 @@ export default {
         this.CourseID +
         "/uppgift/" +
         this.AssignmentID;
+    },
+    parseUrl(){ // do some parsing
+
     },
     validate() {
       this.loading = true;
