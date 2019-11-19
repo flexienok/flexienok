@@ -34,7 +34,9 @@
   justify="center">
 
     <span id="Body">
-      Instructions: input your AssingmentID, eg: 9065 <br> input your AutherizationID, found in networklogs of your question <br> string of number and letters, usually starts with "ey"
+      Instructions: input your AssingmentID, eg: 9065 <br> 
+      input your AutherizationID, found in networklogs of your question <br> 
+      string of number and letters, usually starts with "ey"
     </span>
     
 
