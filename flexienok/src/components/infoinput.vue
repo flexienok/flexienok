@@ -1,5 +1,5 @@
 <template>
-  <v-col cols="4">
+  <v-col >
     <v-card dark justify-center class="width">
       <v-content>
         <v-container fluid fill-height>
@@ -47,8 +47,8 @@
         </v-container>
       </v-content>
     </v-card>
-    <v-card dark>
-      <v-col>
+    <v-card dark class="width">
+      <v-col >
         <v-form v-model="valid" id="input">
           <v-text-field 
             v-model="inputURL" 
@@ -64,7 +64,8 @@
       </v-col>
     </v-card>
     <v-flex xs12>
-      <v-card >
+      <br>
+      <v-card class="width">
         <span id="a"></span>
       </v-card>
     </v-flex>
@@ -115,7 +116,7 @@ export default {
       this.AssignmentID = res[1]
       
     },
-    validate() {
+    validate() { // Real shit vvv
       this.loading = true;
 
       var url = baseurl + this.AssignmentID + "?courseId=" + this.CourseID;
@@ -139,7 +140,6 @@ export default {
           }
 
           document.getElementById("a").innerHTML = answers;
-          this.loading = false;
         })
         .catch(error => {
           if (error.response.data.hasOwnProperty("message")) {
@@ -159,8 +159,10 @@ export default {
           console.log(error.response);
 
           document.getElementById("a").innerHTML = answers;
-          this.loading = false;
         });
+
+                
+        this.loading = false;
     }
   }
 };
