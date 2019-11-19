@@ -4,7 +4,7 @@
       <v-content>
         <v-container fluid fill-height>
           <v-col cols="6">
-            <v-form cols="10" ref="form" lazy-validation>
+            <v-form cols="10" ref="form" lazy-validation >
               <v-text-field v-model="CourseID" label="CourseID" required></v-text-field>
               <v-text-field v-model="AssignmentID" label="AssignmentID" required></v-text-field>
               <v-text-field v-model="AutherizationID" label="AutherizationID" required></v-text-field>
@@ -49,14 +49,18 @@
     </v-card>
     <v-card dark>
       <v-col>
-        <v-text-field 
-          v-model="inputURL" 
-          label="paste url" 
-          required
-          :rules="urlrules"
-          ></v-text-field>
-
-        <v-btn @click="parseUrl">test</v-btn>
+        <v-form v-model="valid" id="input">
+          <v-text-field 
+            v-model="inputURL" 
+            label="paste url" 
+            required
+            :rules="urlrules"
+            ></v-text-field>
+        </v-form>
+        <v-btn 
+        @click="parseUrl"
+        :disabled="!valid">Parse
+        </v-btn>
       </v-col>
     </v-card>
     <v-flex xs12>
@@ -80,6 +84,7 @@ export default {
     AutherizationID: "",
     inputURL: "",
     loading: false,
+    valid: false,
     courses: [
       { bok: "Matte 1a", id: "940" },
       { bok: "Matte 1b", id: "950" },
@@ -87,7 +92,7 @@ export default {
     ],
     urlrules: [
         v => !!v || 'url is not valid',
-        
+        v => /^https:\/\/nokflex.nok.se\/[0-9]{1,}\/uppgift\/[0-9]{1,}$/.test(v) || 'Url is not valid',        
       ]
   }),
 
@@ -100,10 +105,14 @@ export default {
         "/uppgift/" +
         this.AssignmentID;
     },
-    parseUrl(){ // do some parsing
+    parseUrl(){ // do some parsing 
+    // regex patten: ^https://nokflex.nok.se/[0-9]{1,}/uppgift/[0-9]{1,}$
       var url = this.inputURL
+
+      var res = url.replace("https://nokflex.nok.se/", "").split("/uppgift/") // parses url by removing prefix and splitting into a list
       
-      console.log(url)
+      this.CourseID = res[0]
+      this.AssignmentID = res[1]
       
     },
     validate() {
