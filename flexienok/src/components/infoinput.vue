@@ -49,7 +49,12 @@
     </v-card>
     <v-card dark>
       <v-col>
-        <v-text-field v-model="inputURL" label="paste url" required></v-text-field>
+        <v-text-field 
+          v-model="inputURL" 
+          label="paste url" 
+          required
+          :rules="urlrules"
+          ></v-text-field>
 
         <v-btn @click="parseUrl">test</v-btn>
       </v-col>
@@ -79,7 +84,11 @@ export default {
       { bok: "Matte 1a", id: "940" },
       { bok: "Matte 1b", id: "950" },
       { bok: "Matte 1c", id: "960" }
-    ]
+    ],
+    urlrules: [
+        v => !!v || 'url is not valid',
+        
+      ]
   }),
 
   methods: {
@@ -92,7 +101,10 @@ export default {
         this.AssignmentID;
     },
     parseUrl(){ // do some parsing
-
+      var url = this.inputURL
+      
+      console.log(url)
+      
     },
     validate() {
       this.loading = true;
