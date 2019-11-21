@@ -6,74 +6,46 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    baseurl: "https://nokflex-api.nok.se/api/v2/assignment/solution/",
-    solutionData: [],
-    answersData: [],
-    hintsData: [],
+    URL: {
+      solution: "https://nokflex-api.nok.se/api/v2/assignment/solution/",
+      personalInfo: "https://nokflex-api.nok.se/api/v2/user/current/assignment?courseId=960",
+      input: ""
+    },
+    CourseID: "",
+    AssignmentID: "",
+    AutherizationID: "",
+    courses: [{
+        bok: "Matte 1a",
+        id: "940"
+      },
+      {
+        bok: "Matte 1b",
+        id: "950"
+      },
+      {
+        bok: "Matte 1c",
+        id: "960"
+      }
+    ],
   },
   mutations: {
-    getToken() {
-      var a = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
-      var b = [];
-      var tokenLength = "1333";
-      for (var i = 0; i < 1333; i++) {
-        var j = (Math.random() * (a.tokenLength - 1)).toFixed(0);
-        b[i] = a[j];
-      }
-      return b.join("");
+    makeURL() {
+      this.inputURL =
+        "https://nokflex.nok.se/" +
+        this.CourseID +
+        "/uppgift/" +
+        this.AssignmentID;
     },
-    getAssignment(CourseID, AssignmentID, AutherizationID) {
-      this.loading = true;
+    parseUrl() { // do some parsing 
+      // regex patten: ^https://nokflex.nok.se/[0-9]{1,}/uppgift/[0-9]{1,}$
+      var url = this.inputURL
 
-      var url = this.baseurl + AssignmentID + "?courseId=" + CourseID;
-      var headers = {
-        authorization: "Bearer " + AutherizationID
-      };
-      var i = 0;
-      var solutions = [];
+      var res = url.replace("https://nokflex.nok.se/", "").split("/uppgift/") // parses url by removing prefix and splitting into a list
 
-      axios
-        .get(url, {
-          headers: headers
-        })
-        .then(function (response) {
-          for (i = 0; i < response.data.solution.length; i++)
-            solutions.push(response.data.solution[i])
-        })
-        .catch(error => {
-          if (error.response.data.hasOwnProperty("message")) {
-            solutions =
-              "Err: " +
-              error.response.status +
-              "\n" +
-              error.response.data.message;
-          } else if (error.response.data.hasOwnProperty("error")) {
-            solutions =
-              "Err: " +
-              error.response.status +
-              "\n" +
-              error.response.data.error;
-          }
+      this.CourseID = res[0]
+      this.AssignmentID = res[1]
 
-          console.log(error.response);
-
-          document.getElementById("a").innerHTML = solutions;
-          this.loading = false;
-        });
-    }
-    // getAnswer() {
-    //   // console.log(response.data.solution)
-    //   // console.log(response.data.solution.length)
-    //   var i = 0;
-    //   for (i = 0; i < response.data.solution.length; i++) {
-    //     console.log(response.data.solution[i]);
-    //     // console.log(i)
-    //     answers.push(response.data.solution[i].answers + "\n");
-    //   }
-
-    //   document.getElementById("a").innerHTML = answers;
-    //   this.loading = false;
-    // }
+    },
   },
   actions: {},
   modules: {}

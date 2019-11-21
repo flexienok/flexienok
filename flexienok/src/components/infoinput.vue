@@ -1,10 +1,10 @@
 <template>
-  <v-col >
+  <v-col>
     <v-card dark justify-center class="width">
       <v-content>
         <v-container fluid fill-height>
           <v-col cols="6">
-            <v-form cols="10" ref="form" lazy-validation >
+            <v-form cols="10" ref="form" lazy-validation>
               <v-text-field v-model="CourseID" label="CourseID" required></v-text-field>
               <v-text-field v-model="AssignmentID" label="AssignmentID" required></v-text-field>
               <v-text-field v-model="AutherizationID" label="AutherizationID" required></v-text-field>
@@ -48,23 +48,15 @@
       </v-content>
     </v-card>
     <v-card dark class="width">
-      <v-col >
+      <v-col>
         <v-form v-model="valid" id="input">
-          <v-text-field 
-            v-model="inputURL" 
-            label="paste url" 
-            required
-            :rules="urlrules"
-            ></v-text-field>
+          <v-text-field v-model="inputURL" label="paste url" required :rules="urlrules"></v-text-field>
         </v-form>
-        <v-btn 
-        @click="parseUrl"
-        :disabled="!valid">Parse
-        </v-btn>
+        <v-btn @click="parseUrl" :disabled="!valid">Parse</v-btn>
       </v-col>
     </v-card>
     <v-flex xs12>
-      <br>
+      <br />
       <v-card class="width">
         <span id="a"></span>
       </v-card>
@@ -92,31 +84,18 @@ export default {
       { bok: "Matte 1c", id: "960" }
     ],
     urlrules: [
-        v => !!v || 'url is not valid',
-        v => /^https:\/\/nokflex.nok.se\/[0-9]{1,}\/uppgift\/[0-9]{1,}$/.test(v) || 'Url is not valid',        
-      ]
+      v => !!v || "url is not valid",
+      v =>
+        /^https:\/\/nokflex.nok.se\/[0-9]{1,}\/uppgift\/[0-9]{1,}$/.test(v) ||
+        "Url is not valid"
+    ]
   }),
 
   methods: {
-    ...mapMutations(["getToken"]),
-    makeURL() {
-      this.inputURL =
-        "https://nokflex.nok.se/" +
-        this.CourseID +
-        "/uppgift/" +
-        this.AssignmentID;
-    },
-    parseUrl(){ // do some parsing 
-    // regex patten: ^https://nokflex.nok.se/[0-9]{1,}/uppgift/[0-9]{1,}$
-      var url = this.inputURL
+    ...mapMutations(["makeURL", "parseUrl"]),
 
-      var res = url.replace("https://nokflex.nok.se/", "").split("/uppgift/") // parses url by removing prefix and splitting into a list
-      
-      this.CourseID = res[0]
-      this.AssignmentID = res[1]
-      
-    },
-    validate() { // Real shit vvv
+    validate() {
+      // Real shit vvv
       this.loading = true;
 
       var url = baseurl + this.AssignmentID + "?courseId=" + this.CourseID;
@@ -161,8 +140,7 @@ export default {
           document.getElementById("a").innerHTML = answers;
         });
 
-                
-        this.loading = false;
+      this.loading = false;
     }
   }
 };
