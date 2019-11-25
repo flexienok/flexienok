@@ -1,5 +1,5 @@
 <template>
-  <v-col>
+  <div>
     <v-card dark justify-center class="width">
       <v-content>
         <v-container fluid fill-height>
@@ -61,7 +61,7 @@
         <span id="a"></span>
       </v-card>
     </v-flex>
-  </v-col>
+  </div>
 </template>
 
 <script>

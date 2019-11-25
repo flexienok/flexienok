@@ -1,10 +1,11 @@
 <template>
   <v-app>
-    <toolbar />
+    <!-- <toolbar /> -->
+    <bottomNav />
 
     <v-content class="grey darken-4">
       <v-fade-transition mode="out-in">
-        <router-view />
+        <router-view class="px-8 py-8" />
       </v-fade-transition>
     </v-content>
   </v-app>
@@ -13,7 +14,8 @@
 <script>
 export default {
   components: {
-    toolbar: () => import("./components/toolbar.vue")
+    // toolbar: () => import("./components/toolbar.vue"),
+    bottomNav: () => import("./components/bottomNav.vue")
   }
 };
 </script>

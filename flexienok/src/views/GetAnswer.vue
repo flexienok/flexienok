@@ -1,7 +1,9 @@
 <template>
   <div>
-    <infoinput />
-    <testcard />
+    <v-row align="center" justify="center">
+      <infoinput />
+      <!-- <testcard /> -->
+    </v-row>
   </div>
 </template>
 
@@ -9,8 +11,8 @@
 export default {
   name: "GetAnswer",
   components: {
-    infoinput: () => import("../components/infoinput.vue"),
-    testcard: () => import("../components/testcard.vue")
+    infoinput: () => import("../components/infoinput.vue")
+    // testcard: () => import("../components/testcard.vue")
   }
 };
 </script>
