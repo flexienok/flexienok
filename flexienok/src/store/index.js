@@ -14,6 +14,7 @@ export default new Vuex.Store({
     CourseID: "",
     AssignmentID: "",
     AutherizationID: "",
+    inputURL: "",
     courses: [{
         bok: "Matte 1a",
         id: "940"
@@ -39,9 +40,10 @@ export default new Vuex.Store({
     parseUrl() { // do some parsing 
       // regex patten: ^https://nokflex.nok.se/[0-9]{1,}/uppgift/[0-9]{1,}$
       var url = this.inputURL
+      console.log(url)
 
       var res = url.replace("https://nokflex.nok.se/", "").split("/uppgift/") // parses url by removing prefix and splitting into a list
-
+      console.log(res)
       this.CourseID = res[0]
       this.AssignmentID = res[1]
 
