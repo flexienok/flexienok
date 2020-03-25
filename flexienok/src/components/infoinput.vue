@@ -4,9 +4,18 @@
       <v-content>
         <v-container fluid fill-height>
           <v-col cols="6">
-            <v-form cols="10" ref="form" lazy-validation>
-              <v-text-field v-model="CourseID" label="CourseID" required></v-text-field>
-              <v-text-field v-model="AssignmentID" label="AssignmentID" required></v-text-field>
+            <v-form cols="10" v-model="valid" ref="form" lazy-validation>
+              <!-- <v-text-field v-model="CourseID" label="CourseID" required></v-text-field>
+              <v-text-field v-model="AssignmentID" label="AssignmentID" required></v-text-field>-->
+
+              <!-- <v-card dark class="width">
+      <v-col>
+              <v-form v-model="valid" id="input">-->
+              <v-text-field v-model="inputURL" label="paste url" required :rules="urlrules"></v-text-field>
+              <!-- </v-form> -->
+              <v-btn @click="parseUrl" :disabled="!valid">Parse</v-btn>
+              <!-- </v-col>
+              </v-card>-->
               <v-text-field v-model="AutherizationID" label="AutherizationID" required></v-text-field>
             </v-form>
           </v-col>
@@ -28,7 +37,7 @@
               </v-menu>
             </v-col>
             <v-col>
-              <v-btn color="info" class="mr-4" @click="getToken">getToken()</v-btn>
+              <v-btn color="info" class="mr-4" @click="getToken()">getToken()</v-btn>
             </v-col>
           </v-col>
           <v-col>
@@ -46,14 +55,6 @@
           </v-col>
         </v-container>
       </v-content>
-    </v-card>
-    <v-card dark class="width">
-      <v-col>
-        <v-form v-model="valid" id="input">
-          <v-text-field v-model="inputURL" label="paste url" required :rules="urlrules"></v-text-field>
-        </v-form>
-        <v-btn @click="parseUrl" :disabled="!valid">Parse</v-btn>
-      </v-col>
     </v-card>
     <v-flex xs12>
       <br />
@@ -92,8 +93,26 @@ export default {
   }),
 
   methods: {
-    ...mapMutations(["makeURL", "parseUrl"]),
+    // ...mapMutations(["makeURL", "parseUrl"]),
 
+    makeURL() {
+      this.inputURL =
+        "https://nokflex.nok.se/" +
+        this.CourseID +
+        "/uppgift/" +
+        this.AssignmentID;
+    },
+    parseUrl() {
+      // do some parsing
+      // regex patten: ^https://nokflex.nok.se/[0-9]{1,}/uppgift/[0-9]{1,}$
+      var url = this.inputURL;
+      console.log(url);
+
+      var res = url.replace("https://nokflex.nok.se/", "").split("/uppgift/"); // parses url by removing prefix and splitting into a list
+      console.log(res);
+      this.CourseID = res[0];
+      this.AssignmentID = res[1];
+    },
     validate() {
       // Real shit vvv
       this.loading = true;
@@ -141,6 +160,9 @@ export default {
         });
 
       this.loading = false;
+    },
+    getToken(){
+      console.log("WIP")
     }
   }
 };
