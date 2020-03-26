@@ -34,9 +34,9 @@
   justify="center">
 
     <span id="Body">
-      <!-- Instructions: input your AssingmentID, eg: 9065 <br>  -->
-      <!-- input your AutherizationID, found in networklogs of your question. <br>  -->
-      Input your AutherizationID, In your cookies, found in devtools > Application > Local Storage > nokflex.nok.se > default_auth_token <br>
+      Instructions: input your AssingmentID, eg: 9065 <br> 
+      input your AutherizationID, found in networklogs of your question. <br> 
+      Or in your cookies, found in devtools > Application > Local Storage > nokflex.nok.se > default_auth_token <br>
       string of number and letters, usually starts with "ey"
     </span>
     
