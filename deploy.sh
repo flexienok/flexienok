@@ -24,6 +24,9 @@ cd dist
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
 
+  
+echo '<meta http-equiv="Refresh" content="0; url=https://flexienok.github.io/" />' > 404.html
+
 git init
 git add -A
 git commit -m 'deploy'
