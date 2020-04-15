@@ -91,6 +91,9 @@ export default {
         "Url is not valid"
     ]
   }),
+  mounted(){
+    this.AutherizationID = localStorage.getItem("id");
+  },
 
   methods: {
     // ...mapMutations(["makeURL", "parseUrl"]),
@@ -116,6 +119,8 @@ export default {
     validate() {
       // Real shit vvv
       this.loading = true;
+
+      localStorage.setItem("id", this.AutherizationID);
 
       var url = baseurl + this.AssignmentID + "?courseId=" + this.CourseID;
       var headers = {
